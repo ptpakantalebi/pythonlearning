@@ -8,6 +8,7 @@ if '^' in a:
             for yt in range(1,int(h)):
                 r *= int(p)
     print(r)
+from datetime import datetime
 import math
 def isprime(e):
     iiu = 0
@@ -49,7 +50,7 @@ if a.endswith('#'):
             er *= t
     print(len(str(er)))
 if a.endswith('!'):
-    i = 1
-    for q in range(2,int(a[0:-1])+1):
-        i *= q
-    print(i)
+    t0 = datetime.now()
+    print(len(str(math.factorial(int(a[0:-1])))))
+    t1 = datetime.now()
+    print(t1-t0)
