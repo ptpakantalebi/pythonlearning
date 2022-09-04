@@ -48,7 +48,7 @@ if football_gate_0[0] == football_gate_1[0]:
             player.goto(P_position_0[0],go_1)
     P_position_1 = player.position()
     if ball_position_0[0] < P_position_0[0]:
-        for go_3 in range(P_position_0[0],ball_position_0[0]-30,-30):
+        for go_3 in range(P_position_1[0],ball_position_0[0]-30,-30):
             player.goto(go_3,P_position_1[1])
     if ball_position_0[0] > P_position_0[0]:
         for go_4 in range(P_position_1[0],ball_position_0[0]+30,30):
@@ -65,10 +65,18 @@ if football_gate_0[0] == football_gate_1[0]:
             Ball.goto(ball_position_2[0],walk_together_2)
     ball_pos = Ball.position()
     P_position_4=player.position()
-    if ball_pos[1]>P_position_4[1]:
+    if subtract[0]==0:
+        if ball_pos[1]>P_position_4[1]:
+            player.goto(ball_pos[0]+30,ball_pos[1]-30)
+        else:
+            player.goto(ball_pos[0]+30,ball_pos[1]-30)
         player.goto(ball_pos[0]+30,ball_pos[1])
     else:
-        player.goto(ball_pos[0]+30,ball_pos[1])
+        if ball_pos[1]>P_position_4[1]:
+            player.goto(ball_pos[0]-30,ball_pos[1]-30)
+        else:
+            player.goto(ball_pos[0]-30,ball_pos[1]+30)
+        player.goto(ball_pos[0]-30,ball_pos[1])
     input()
     if subtract[0]>ball_pos[0]:
         for finish_1 in range(ball_pos[0],subtract[0]+30,30):
@@ -79,22 +87,21 @@ if football_gate_0[0] == football_gate_1[0]:
             player.goto(finish_2+30,ball_pos[1])
             Ball.goto(finish_2,ball_pos[1])
 else:
-    print(subtract[0],ball_position_0[0])
     if subtract[0] > ball_position_0[0]:
         for go_5 in range(P_position_0[0],ball_position_0[0]-60,-30):
             player.goto(go_5,P_position_0[1])
     else:
         for go_6 in range(P_position_0[0],ball_position_0[0]+60,30):
             player.goto(go_6,P_position_0[0])
-    a = input()
+    input()
     P_position_2 = player.position()
     if ball_position_0[1] < P_position_2[1]:
-        for go_3 in range(P_position_0[1],ball_position_0[1]-30,-30):
+        for go_3 in range(P_position_2[1],ball_position_0[1]-30,-30):
             player.goto(P_position_2[0],go_3)
     if ball_position_0[1] > P_position_2[1]:
-        for go_4 in range(P_position_0[1],ball_position_0[1]+30,30):
+        for go_4 in range(P_position_2[1],ball_position_0[1]+30,30):
             player.goto(P_position_2[0],go_4)
-    a = input()
+    input()
     if ball_position_0[0]<subtract[0]:
         for walk_together_1 in range(ball_position_0[0],subtract[0]+30,30):
             ball_position_3 = Ball.position()
@@ -105,18 +112,28 @@ else:
             ball_position_2 = Ball.position()
             player.goto(walk_together_2+30,ball_position_2[1])
             Ball.goto(walk_together_2,ball_position_2[1])
+    input()
+    ball_position = Ball.position()
+    if subtract[1]==0:
+        if ball_position[0]>P_position_2[0]:
+            player.goto(ball_position[0]+30,ball_position[1]-30)
+        else:
+            player.goto(ball_position[0]-30,ball_position[1]+30)
+        player.goto(ball_position[0],ball_position[1]+30)
+    else:
+        if ball_position[0]>P_position_2[0]:
+            player.goto(ball_position[0]-30,ball_position[1]-30)
+        else:
+            player.goto(ball_position[0]+30,ball_position[1]-30)
+        player.goto(ball_position[0],ball_position[1]-30)
+    input()
     a = input()
-    ball_pos = Ball.position()
-    if subtract[0]>ball_pos[0]:
-        player.goto(ball_pos[0],ball_pos[1]+30)
+    if subtract[1]>ball_position[1]:
+        for finish_1 in range(ball_position[1],subtract[1]+30,30):
+            player.goto(ball_position[0],finish_1-30)
+            Ball.goto(ball_position[0],finish_1)
     else:
-        player.goto(ball_pos[0],ball_pos[1]-30)
-    if subtract[1]>ball_pos[1]:
-        for finish_1 in range(ball_pos[1],subtract[1]+30,30):
-            player.goto(ball_pos[0],finish_1)
-            Ball.goto(ball_pos[0]+30,finish_1)
-    else:
-        for finish_2 in range(ball_pos[1],subtract[1]-30,-30):
-            player.goto(ball_pos[0],finish_2)
-            Ball.goto(ball_pos[10]+30,finish_2)
+        for finish_2 in range(ball_position[1],subtract[1]-30,-30):
+            player.goto(ball_position[0],finish_2+30)
+            Ball.goto(ball_position[0],finish_2)
 input()
