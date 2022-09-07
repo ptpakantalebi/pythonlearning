@@ -1,4 +1,6 @@
+from collections import namedtuple
 import turtle
+from typing import NamedTuple
 input_number_1 = int(input('enter the number: '))
 square = turtle.Turtle()
 for f in range(0,input_number_1):
@@ -15,18 +17,24 @@ for g in range(0,input_number_1):
     square.backward(input_number_1*30)
     square.right(90)
 input_number_2 = input('player: ').split(',')
+PLAYER = namedtuple('PLAYER',['X','Y'])
+MOVE_1 = PLAYER(input_number_2[0]*30,input_number_2[1]*30)
 player = turtle.Turtle()
 player.shape('circle')
 player.shapesize(2,1,1)
 player.color('red')
 player.penup()
-player.goto(int(input_number_2[0])*30,int(input_number_2[1])*30)
+def move_player(x , y):
+    player.goto(x,y)
+player.goto(MOVE_1.X,MOVE_1.Y)
 input_number_3 = input('ball: ').split(',')
+BALL = namedtuple('BALL',['X','Y'])
+MOVE_2 = BALL(input_number_3[0],input_number_3[1])
 Ball = turtle.Turtle()
 Ball.shape('circle')
 Ball.color('green')
 Ball.penup()
-Ball.goto(int(input_number_3[0])*30,int(input_number_3[1])*30)
+Ball.goto(MOVE_2.X*30,MOVE_2.Y*30)
 check = turtle.Turtle()
 input_number_4 = input('football gate: ').split(' ')
 football_gate_0_input = input_number_4[0].split(',')
@@ -77,7 +85,6 @@ if football_gate_0[0] == football_gate_1[0]:
         else:
             player.goto(ball_pos[0]-30,ball_pos[1]+30)
         player.goto(ball_pos[0]-30,ball_pos[1])
-    input()
     if subtract[0]>ball_pos[0]:
         for finish_1 in range(ball_pos[0],subtract[0]+30,30):
             player.goto(finish_1-30,ball_pos[1])
@@ -93,7 +100,6 @@ else:
     else:
         for go_6 in range(P_position_0[0],ball_position_0[0]+60,30):
             player.goto(go_6,P_position_0[0])
-    input()
     P_position_2 = player.position()
     if ball_position_0[1] < P_position_2[1]:
         for go_3 in range(P_position_2[1],ball_position_0[1]-30,-30):
@@ -101,7 +107,6 @@ else:
     if ball_position_0[1] > P_position_2[1]:
         for go_4 in range(P_position_2[1],ball_position_0[1]+30,30):
             player.goto(P_position_2[0],go_4)
-    input()
     if ball_position_0[0]<subtract[0]:
         for walk_together_1 in range(ball_position_0[0],subtract[0]+30,30):
             ball_position_3 = Ball.position()
@@ -112,7 +117,6 @@ else:
             ball_position_2 = Ball.position()
             player.goto(walk_together_2+30,ball_position_2[1])
             Ball.goto(walk_together_2,ball_position_2[1])
-    input()
     ball_position = Ball.position()
     if subtract[1]==0:
         if ball_position[0]>P_position_2[0]:
@@ -126,8 +130,6 @@ else:
         else:
             player.goto(ball_position[0]+30,ball_position[1]-30)
         player.goto(ball_position[0],ball_position[1]-30)
-    input()
-    a = input()
     if subtract[1]>ball_position[1]:
         for finish_1 in range(ball_position[1],subtract[1]+30,30):
             player.goto(ball_position[0],finish_1-30)
