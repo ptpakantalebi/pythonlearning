@@ -1,0 +1,1 @@
+print(list(filter(lambda a:a%5==0,range(1,int(input('enter the number: '))+1))))
