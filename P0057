@@ -1,4 +1,8 @@
+input_number = input('enter the number: ')
+list_0 = []
+
 import math
+
 def isprime(e):
     iiu = 0
     for x in range(2,e):
@@ -6,6 +10,7 @@ def isprime(e):
             iiu += 1
     if iiu == e-2:
         return e
+
 def real_prime_number(tyu):
     if tyu == 0:
         return
@@ -34,7 +39,22 @@ def real_prime_number(tyu):
             tesf += 1
     if tesf == len(haripater):
         return tyu
-if real_prime_number(int(input('enter the number: '))):
-    print('this number is prime.')
-else:
-    print('this number is not prime number.')
+
+for q in range(1,len(input_number)+1):
+    s = 0
+    e = q
+    while e != len(input_number)+1:
+        if input_number[s:e][0] == '0':
+            delete_number = list(input_number[s:e])
+            while delete_number[0] != '0':
+                delete_number.pop(0)
+            if real_prime_number(int(''.join(delete_number))):
+                list_0.append(''.join(delete_number))
+
+        else:
+            if real_prime_number(int(input_number[s:e])):
+                list_0.append(input_number[s:e])
+        s += 1
+        e += 1
+
+print(set(list_0))

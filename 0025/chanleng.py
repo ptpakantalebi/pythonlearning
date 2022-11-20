@@ -11,6 +11,7 @@ for x in range(0,len(list_alphabet)):
 sort_list_alphabet = sorted(list_alphabet, key=lambda t:t[-1])
 for member_list_alphabet in sort_list_alphabet:
     print(member_list_alphabet)
+print()
 split_input = input_text.split(' ')
 for f in range(0,len(split_input)-1):
     if len(split_input[f+1]) > len(split_input[f]):
@@ -19,6 +20,7 @@ for f in range(0,len(split_input)-1):
         print(split_input[f],'and',split_input[f+1])
 b = Counter(split_input[0:int(len(split_input)/2)])
 c = Counter(split_input[int(len(split_input)/2):])
+print()
 for v in c:
     for n in b:
         if v == n:

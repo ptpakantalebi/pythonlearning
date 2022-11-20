@@ -14,5 +14,6 @@ while True:
     g = input('enter the words: ')
     if g == 'END':
         break
-    f.remove(g)
+    while g in f:
+        f.remove(g)
 print(*f,sep=' ')
